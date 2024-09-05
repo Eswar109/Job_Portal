@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verification Process Overview</title>
+    <link rel="stylesheet" href="css/jobSeekerVerification.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="verification-container">
+        <h1>Account Under Review</h1>
+        <p>Your account is currently being reviewed by your college. Once your details are verified, you will gain full access to all the features of the job portal.</p>
+        <div class="progress-container">
+            <div class="progress-bar" id="progress-bar"></div>
+            <div class="progress-steps">
+                <div class="step completed">1</div>
+                <div class="step active">2</div>
+                <div class="step">3</div>
+            </div>
+        </div>
+        <div class="step-details">
+            <div class="step-content active" id="step1-content">
+                <h3>Step 1: Submission</h3>
+                <p>Your details have been successfully submitted and are awaiting review. This is the first step in gaining access to the job portal.</p>
+            </div>
+            <div class="step-content" id="step2-content">
+                <h3>Step 2: College Verification</h3>
+                <p>Your details are being verified by your college. This process ensures that only authorized users have access to the job portal. This might take a few days, and you'll be notified once the verification is complete.</p>
+            </div>
+            <div class="step-content" id="step3-content">
+                <h3>Step 3: Approval</h3>
+                <p>Congratulations! Once your details are verified, you'll gain full access to job listings, the dashboard, and all other features. You'll be able to apply for jobs, save your favorite listings, and receive job alerts.</p>
+            </div>
+        </div>
+        <button onclick="location.href='index.html'">Return to Homepage</button>
+    </div>
+
+    <script src="js/jobSeekerVerification.js"></script>
+</body>
+</html>

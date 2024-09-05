@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration and Login Form</title>
+    <link rel="stylesheet" href="css/signup.css">
+</head>
+<body>
+    <div class="form-container">
+        <div class="tabs">
+            <button class="tab active" id="registerTab" onclick="showTab('register')">Register</button>
+            <button class="tab" id="loginTab" onclick="showTab('login')">Login</button>
+        </div>
+
+        <div id="registerForm" class="form-content active">
+            <form id="registrationForm">
+        
+                <div class="form-row">
+                    <div class="form-column">
+                        <label for="fullName">Full Name:</label>
+                        <input type="text" id="fullName" name="fullName" required>
+                    </div>
+                    <div class="form-column">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                </div>
+        
+                <div class="form-row">
+                    <div class="form-column">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <div class="form-column">
+                        <label for="confirmPassword">Confirm Password:</label>
+                        <input type="password" id="confirmPassword" name="confirmPassword" required>
+                    </div>
+                </div>
+        
+                <div class="form-row">
+                    <div class="form-column">
+                        <label for="phoneNumber">Phone Number:</label>
+                        <input type="tel" id="phoneNumber" name="phoneNumber" required>
+                    </div>
+                    <div class="form-column">
+                        <label for="userType">User Type:</label>
+                        <select id="userType" name="userType" required>
+                            <option value="">Select User Type</option>
+                            <option value="jobSeeker">Job Seeker</option>
+                            <option value="employer">Employer</option>
+                            <option value="company">Company</option>
+                            <option value="college">College</option>
+                        </select>
+                    </div>
+                </div>
+        
+                <!-- Job Seeker Additional Fields -->
+                <div id="jobSeekerFields" class="additional-fields">
+                    <div class="form-row">
+                        <div class="form-column">
+                            <label for="collegeName">College Name:</label>
+                            <input type="text" id="collegeName" name="collegeName">
+                        </div>
+                        <div class="form-column">
+                            <label for="studentId">Student ID:</label>
+                            <input type="text" id="studentId" name="studentId">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-column">
+                            <label for="academicDetails">Academic Details:</label>
+                            <textarea id="academicDetails" name="academicDetails"></textarea>
+                        </div>
+                        <div class="form-column">
+                            <label for="academicProof">Upload Academic Proofs:</label>
+                            <input type="file" id="academicProof" name="academicProof">
+                        </div>
+                    </div>
+                </div>
+        
+                <!-- Employer Additional Fields -->
+                <div id="employerFields" class="additional-fields">
+                    <div class="form-row">
+                        <div class="form-column">
+                            <label for="companyName">Company Name:</label>
+                            <input type="text" id="companyName" name="companyName">
+                        </div>
+                        <div class="form-column">
+                            <label for="employeeId">Employee ID:</label>
+                            <input type="text" id="employeeId" name="employeeId">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-column">
+                            <label for="position">Position/Title:</label>
+                            <input type="text" id="position" name="position">
+                        </div>
+                        <div class="form-column">
+                            <label for="employmentProof">Upload Employment Proof:</label>
+                            <input type="file" id="employmentProof" name="employmentProof">
+                        </div>
+                    </div>
+                </div>
+        
+                <!-- Company Additional Fields -->
+                <div id="companyFields" class="additional-fields">
+                    <div class="form-row">
+                        <div class="form-column">
+                            <label for="companyRegNumber">Company Registration Number:</label>
+                            <input type="text" id="companyRegNumber" name="companyRegNumber">
+                        </div>
+                        <div class="form-column">
+                            <label for="companyAddress">Company Address:</label>
+                            <input type="text" id="companyAddress" name="companyAddress">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-column">
+                            <label for="contactPersonName">Contact Person Name:</label>
+                            <input type="text" id="contactPersonName" name="contactPersonName">
+                        </div>
+                        <div class="form-column">
+                            <label for="contactPersonEmail">Contact Person Email:</label>
+                            <input type="email" id="contactPersonEmail" name="contactPersonEmail">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-column">
+                            <label for="companyProof">Upload Company Proof:</label>
+                            <input type="file" id="companyProof" name="companyProof">
+                        </div>
+                    </div>
+                </div>
+        
+                <!-- College Additional Fields -->
+                <div id="collegeFields" class="additional-fields">
+                    <div class="form-row">
+                        <div class="form-column">
+                            <label for="collegeRegNumber">College Registration Number:</label>
+                            <input type="text" id="collegeRegNumber" name="collegeRegNumber">
+                        </div>
+                        <div class="form-column">
+                            <label for="collegeAddress">College Address:</label>
+                            <input type="text" id="collegeAddress" name="collegeAddress">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-column">
+                            <label for="contactPersonNameCollege">Contact Person Name:</label>
+                            <input type="text" id="contactPersonNameCollege" name="contactPersonNameCollege">
+                        </div>
+                        <div class="form-column">
+                            <label for="contactPersonEmailCollege">Contact Person Email:</label>
+                            <input type="email" id="contactPersonEmailCollege" name="contactPersonEmailCollege">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-column">
+                            <label for="collegeProof">Upload College Proof:</label>
+                            <input type="file" id="collegeProof" name="collegeProof">
+                        </div>
+                    </div>
+                </div>
+        
+                <button type="submit">Register</button>
+            </form>
+        </div>
+
+        <div id="loginForm" class="form-content">
+            <form id="loginFormContent">
+                <div class="form-row single-column">
+                    <div class="form-column">
+                        <label for="loginEmail">Email:</label>
+                        <input type="email" id="loginEmail" name="loginEmail" required>
+                    </div>
+                    <div class="form-column">
+                        <label for="loginPassword">Password:</label>
+                        <input type="password" id="loginPassword" name="loginPassword" required>
+                    </div>
+                </div>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/signup.js"></script>
+</body>
+</html>

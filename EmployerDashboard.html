@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employer Dashboard</title>
+    <link rel="stylesheet" href="css/EmployerDashboard.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <header>
+            <h1>Employer Dashboard</h1>
+            <div class="profile-button" id="profileButton">
+                <img src="images/logo.svg" alt="Company Logo" id="profileImage">
+            </div>
+        </header>
+        
+        <div class="profile-popup" id="profilePopup">
+            <button id="closePopup" class="close-btn">&#x2715;</button>
+            <div class="profile-details">
+                <div class="profile-pic-container">
+                    <img src="images/logo_without_bg.png" alt="Company Logo" id="profilePic">
+                    <input type="file" id="profilePicUpload" class="hidden">
+                    <button id="uploadBtn">Change Logo</button>
+                </div>
+                <div class="profile-info">
+                    <p id="profileName">John Doe</p>
+                    <p id="profileEmail">john.doe@example.com</p>
+                    <p id="profilePhone">+1 234 567 890</p>
+                    <p id="profileLocation">California, USA</p>
+    
+                    <input type="text" id="profileNameEdit" class="edit-input hidden" placeholder="Enter your name">
+                    <input type="email" id="profileEmailEdit" class="edit-input hidden" placeholder="Enter your email">
+                    <input type="text" id="profilePhoneEdit" class="edit-input hidden" placeholder="Enter your phone">
+                    <input type="text" id="profileLocationEdit" class="edit-input hidden" placeholder="Enter your location">
+    
+                    <button id="editProfileBtn">Edit Profile</button>
+                    <button id="saveProfileBtn" class="hidden">Save Changes</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="dashboard-section">
+            <h2>Post a Job</h2>
+            <form id="postJobForm">
+                <div class="form-group">
+                    <label for="jobTitle">Job Title:</label>
+                    <input type="text" id="jobTitle" required>
+                </div>
+                <div class="form-group">
+                    <label for="jobDescription">Job Description:</label>
+                    <textarea id="jobDescription" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="jobLocation">Location:</label>
+                    <input type="text" id="jobLocation" required>
+                </div>
+                <div class="form-group">
+                    <label for="jobType">Job Type:</label>
+                    <select id="jobType" required>
+                        <option value="full-time">Full-Time</option>
+                        <option value="part-time">Part-Time</option>
+                        <option value="contract">Contract</option>
+                        <option value="internship">Internship</option>
+                    </select>
+                </div>
+                <button type="submit" class="submit-btn">Post Job</button>
+            </form>
+        </div>
+
+        <div class="dashboard-section">
+            <h2>Manage Posted Jobs</h2>
+            <div class="posted-jobs" id="postedJobs">
+                <!-- Example job entry -->
+                <div class="job-card" data-status="active" data-title="Software Engineer">
+                    <h3>Software Engineer</h3>
+                    <p>Location: California, USA</p>
+                    <p>Status: Active</p>
+                    <button class="edit-job-btn">Edit</button>
+                    <button class="view-applicants-btn">View Applicants</button>
+                </div>
+                <div class="job-card" data-status="closed" data-title="UI/UX Designer">
+                    <h3>UI/UX Designer</h3>
+                    <p>Location: Remote</p>
+                    <p>Status: Closed</p>
+                    <button class="edit-job-btn">Edit</button>
+                    <button class="view-applicants-btn">View Applicants</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/EmployerDashboard.js"></script>
+</body>
+</html>

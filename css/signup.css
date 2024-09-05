@@ -1,0 +1,285 @@
+
+/* Body blur effect */
+body.blur {
+    filter: blur(5px);
+    overflow: hidden;
+}
+
+/* Overlay styling */
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 100;
+    backdrop-filter: blur(8px); /* Apply blur to the overlay background */
+    transition: opacity 0.3s ease;
+}
+
+.overlay.active {
+    display: block;
+    opacity: 1;
+}
+
+.overlay.fade-out {
+    opacity: 0;
+}
+
+.links1 a{
+    display: inline-block;
+    height: 30px;
+    width: 30px;
+    color: #4d4f55;
+    background-color: white;
+    margin: 0px 0px 0px 700px;
+    text-align: center;
+    line-height: 10px;
+    border-radius: 50%;
+    transition: 0.4s;
+}
+.links1 a:hover{
+    color: #c31010;
+    /* background-color: white; */
+}
+/* Form section styling */
+.form-section {
+    position: fixed;
+    width: 90%;
+    max-width: 800px;
+    max-height: 80vh; /* Limit form height to 80% of viewport height */
+    overflow-y: auto; /* Allow vertical scrolling if needed */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 30px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    z-index: 1001;
+    border-radius: 10px;
+    display: none;
+    animation: slideIn 0.3s ease-out;
+}
+
+.form-section.active {
+    display: block;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -60%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+/* Form container styling */
+.form-container {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Tabs styling */
+.tabs {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid #ddd;
+    margin-bottom: 20px;
+}
+
+.tab {
+    padding: 8px 16px;
+    background: white;
+    color: #6D5BBA;
+    border: none;
+    border-radius: 5px 5px 0 0;
+    cursor: pointer;
+    transition: background 0.3s ease, color 0.3s ease;
+    text-align: center;
+    flex: 1;
+    position: relative; /* Needed for pseudo-element */
+}
+
+.tab:hover {
+    background: #f0f0f0;
+}
+
+.tab.active {
+    background: #6D5BBA;
+    color: white;
+    border-radius: 5px 5px 0 0;
+}
+
+.tab:not(.active)::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: -1px;
+    width: 2px;
+    height: 100%;
+    background: #ddd;
+}
+
+/* Remove vertical line from the last tab */
+.tab:last-of-type::after {
+    display: none;
+}
+
+/* Form content styling */
+.form-content {
+    display: none;
+}
+
+.form-content.active {
+    display: block;
+}
+
+/* Form row styling */
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+
+/* Form column styling */
+.form-column {
+    flex: 1;
+    margin: 0 5px;
+}
+
+/* Single column for login */
+.login-form .form-column {
+    flex: 1 100%;
+}
+
+/* Additional fields styling */
+.additional-fields {
+    display: none;
+}
+
+/* Show additional fields based on user type */
+#jobSeekerFields,
+#employerFields,
+#companyFields,
+#collegeFields {
+    display: none;
+}
+
+/* Input and select styling */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"],
+textarea,
+select {
+    width: calc(100% - 16px); /* Adjust width to include padding */
+    padding: 8px;
+    margin: 8px; /* Add space around the input fields */
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Button styling */
+button {
+    background: #6D5BBA;
+    color: white;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    font-size: 14px;
+    width: calc(100% - 16px); /* Adjust width to include padding */
+    margin: 8px; /* Add space around the button */
+}
+
+button:hover {
+    background: #8D58BF;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .form-column {
+        flex: 1 100%;
+        margin: 0;
+    }
+
+    .tabs {
+        flex-direction: row;
+        border-bottom: none;
+    }
+
+    .tab {
+        width: 50%;
+        border-radius: 0;
+        margin-bottom: 10px;
+    }
+
+    .tab:not(.active)::after {
+        display: none;
+    }
+    
+}
+@media (max-width: 900px){
+    .links1 a{
+        margin-left: 0px;
+        /* margin-bottom: 20px; */
+        /* margin-top: -20px; */
+        height: 25px;
+        width: 25px;
+        line-height: 25px;
+    }
+}
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+
+/* Hide default file input */
+/* Add your existing styles here */
+
+.additional-fields {
+    display: none;
+}
+
+.additional-fields.active {
+    display: block;
+}
+input[type='file']{
+    display: none;
+}
+
+.custom-file-upload {
+    cursor: pointer;
+    display: inline-block;
+    padding: 6px 12px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: #5078e6;
+    margin-left: 48px;
+    margin-top: 25px;
+}
+
+.file-name {
+    margin-left: 80px;
+    margin-top: 30px;
+    
+}
