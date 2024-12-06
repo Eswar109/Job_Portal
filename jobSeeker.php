@@ -1,11 +1,36 @@
+<?php
+session_start();
+
+// Check if the user is logged in and is a job seeker
+if (!isset($_SESSION['userId']) || $_SESSION['userType'] !== 'jobSeeker') {
+    header("Location: index.php");
+    exit;
+}
+
+// Connect to the database
+include 'dbcon.php';
+
+$userId = $_SESSION['userId'];
+
+// Fetch job seeker profile details from the users table
+$stmt = $conn->prepare('SELECT name, email, phone_number FROM users WHERE id = ?');
+$stmt->bind_param('i', $userId);
+$stmt->execute();
+$stmt->bind_result($name, $email, $phone);
+$stmt->fetch();
+$stmt->close();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Job Seeker Dashboard</title>
     <link rel="stylesheet" href="css/jobSeekerDashboard.css">
 </head>
+
 <body>
     <div class="dashboard-container">
         <header>
@@ -14,7 +39,7 @@
                 <img src="images/bg1.avif" alt="Profile Picture" id="profileImage">
             </div>
         </header>
-        
+
         <div class="profile-popup" id="profilePopup">
             <button id="closePopup" class="close-btn">&#x2715;</button>
             <div class="profile-details">
@@ -24,22 +49,23 @@
                     <button id="uploadBtn">Change Picture</button>
                 </div>
                 <div class="profile-info">
-                    <p id="profileName">John Doe</p>
-                    <p id="profileEmail">john.doe@example.com</p>
-                    <p id="profilePhone">+1 234 567 890</p>
+                    <p id="profileName"><?php echo htmlspecialchars($name); ?></p>
+                    <p id="profileEmail"><?php echo htmlspecialchars($email); ?></p>
+                    <p id="profilePhone"><?php echo htmlspecialchars($phone); ?></p>
                     <p id="profileLocation">California, USA</p>
-    
+
                     <input type="text" id="profileNameEdit" class="edit-input hidden" placeholder="Enter your name">
                     <input type="email" id="profileEmailEdit" class="edit-input hidden" placeholder="Enter your email">
                     <input type="text" id="profilePhoneEdit" class="edit-input hidden" placeholder="Enter your phone">
-                    <input type="text" id="profileLocationEdit" class="edit-input hidden" placeholder="Enter your location">
-    
+                    <input type="text" id="profileLocationEdit" class="edit-input hidden"
+                        placeholder="Enter your location">
+
                     <button id="editProfileBtn">Edit Profile</button>
                     <button id="saveProfileBtn" class="hidden">Save Changes</button>
                 </div>
             </div>
         </div>
-        
+
         <div class="dashboard-section">
             <h2>Job Search</h2>
             <div class="job-search">
@@ -59,58 +85,26 @@
                 </select>
             </div>
             <div class="applied-jobs" id="appliedJobs">
-                <!-- Example job entry -->
-                <div class="job-card" data-status="under-review" data-title="Software Engineer">
-                    <h3>Software Engineer</h3>
-                    <p>Company: ABC Tech</p>
-                    <p>Status: Under Review</p>
-                </div>
-                <div class="job-card" data-status="interview" data-title="Frontend Developer">
-                    <h3>Frontend Developer</h3>
-                    <p>Company: XYZ Solutions</p>
-                    <p>Status: Interview Scheduled</p>
-                </div>
-                <div class="job-card" data-status="offer" data-title="Data Scientist">
-                    <h3>Data Scientist</h3>
-                    <p>Company: DataCorp</p>
-                    <p>Status: Offer Received</p>
-                </div>
+                <!-- Jobs will be dynamically populated using PHP & JS -->
             </div>
         </div>
 
         <div class="dashboard-section">
             <h2>Saved Jobs</h2>
             <div class="saved-jobs" id="savedJobs">
-                <!-- Example saved job entry -->
-                <div class="job-card" data-title="Backend Developer">
-                    <h3>Backend Developer</h3>
-                    <p>Company: Webify</p>
-                    <button class="apply-btn">Apply Now</button>
-                </div>
-                <div class="job-card" data-title="UI/UX Designer">
-                    <h3>UI/UX Designer</h3>
-                    <p>Company: Creative Minds</p>
-                    <button class="apply-btn">Apply Now</button>
-                </div>
+                <!-- Jobs will be dynamically populated using PHP & JS -->
             </div>
         </div>
 
         <div class="dashboard-section">
             <h2>Job Alerts</h2>
             <div class="job-alerts" id="jobAlerts">
-                <!-- Example job alert entry -->
-                <div class="alert-card">
-                    <h3>New Software Engineering Jobs in California</h3>
-                    <button class="view-alert-btn">View Jobs</button>
-                </div>
-                <div class="alert-card">
-                    <h3>Data Science Jobs with Remote Options</h3>
-                    <button class="view-alert-btn">View Jobs</button>
-                </div>
+                <!-- Job alerts will be dynamically populated -->
             </div>
         </div>
     </div>
 
     <script src="js/jobSeekerDashboard.js"></script>
 </body>
+
 </html>

@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             switch ($userType) {
                 case 'jobSeeker':
-                    header("Location: jobSeeker.html");
+                    header("Location: jobSeeker.php");
                     break;
                 case 'employer':
                     header("Location: EmployerDashboard.html");

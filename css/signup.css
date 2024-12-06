@@ -47,8 +47,8 @@ body.blur {
 /* Form section styling */
 .form-section {
     position: fixed;
-    width: 90%;
-    max-width: 800px;
+    width: 80%;
+    max-width: 500px;
     max-height: 80vh; /* Limit form height to 80% of viewport height */
     overflow-y: auto; /* Allow vertical scrolling if needed */
     top: 50%;
@@ -209,6 +209,10 @@ button:hover {
 button:active {
     transform: scale(0.98);
 }
+#loginForm{
+    width: 50%;
+    margin-left: 25%;
+}
 
 /* Media Queries */
 @media (max-width: 768px) {
@@ -230,6 +234,9 @@ button:active {
 
     .tab:not(.active)::after {
         display: none;
+    }
+    #loginForm{
+        width: 100%;
     }
     
 }
